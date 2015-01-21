@@ -42,7 +42,7 @@ class m141125_085752_module_mediafile extends Migration
             'mediafiletypeid' => Schema::TYPE_INTEGER . ' NOT NULL',
             'title' => Schema::TYPE_STRING,
             'notes' => Schema::TYPE_STRING,
-            'uid' => Schema::TYPE_STRING . '(512) NOT NULL'
+            'uid' => Schema::TYPE_STRING . '(512) NOT NULL',
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
             'CONSTRAINT uc_mediafile_uid UNIQUE(uid)',
