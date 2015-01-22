@@ -54,7 +54,7 @@ class AttachMediafileWidget extends Widget
             if(preg_match('/^image\//', $mediafile->mediafiletype->mimetype))
             {
             $html .= '<img src="'
-                . Url::to(['mediafile/view', 'id' => $mediafile->primaryKey])
+                . Url::to(['mediafile/mediafile/view', 'id' => $mediafile->primaryKey])
                 . '" class="img-thumbnail" />';
             }
             else
