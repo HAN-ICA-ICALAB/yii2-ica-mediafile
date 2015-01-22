@@ -14,7 +14,7 @@ use yii\base\Behavior;
 use app\modules\mediafile\models\Mediafile;
 use app\modules\mediafile\models\Mediafiletype;
 use app\modules\mediafile\components\ImageToPngConverter;
-
+use yii\web\HttpException;
 class ControllerWithMediafileBehavior extends Behavior
 {
     public $modelClass;
