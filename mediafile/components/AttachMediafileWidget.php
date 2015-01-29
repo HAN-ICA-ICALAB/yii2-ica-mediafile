@@ -84,7 +84,7 @@ class AttachMediafileWidget extends Widget
 
         $html .= '<div class="row">';
 
-        $html .= $this->form->field($this->model, 'newFile')->fileInput();
+        $html .= $this->form->field($this->model, 'newFile')->fileInput()->label(MediafileModule::t('mediafile', 'New file'));
         
         $html .= '</div>';
         return $html;

@@ -6,6 +6,7 @@ class MediafileModule extends \yii\base\Module
     public function init()
     {
         parent::init();
+        $this->registerTranslations();
     }
 
     public function registerTranslations()

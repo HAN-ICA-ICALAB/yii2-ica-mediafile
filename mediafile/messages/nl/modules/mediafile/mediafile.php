@@ -14,14 +14,19 @@
  * Message string can be used with plural forms format. Check i18n section
  * of the guide for details.
  *
- * NOTE: this file must be saved in UTF-8 encoding.
- */
+ * NOTE: this file must be saved in UTF-8 encoding.                                         */
 return [
-    'Extension' => '',
-    'File type' => '',
-    'File types' => '',
-    'MIME type' => '',
-    'Name' => '',
-    'Title' => '',
-    'notes' => '',
+    'Extension' => 'Extensie',
+    'File type' => 'Bestandstype',
+    'File types' => 'Bestandstypen',
+    'MIME type' => 'MIME-type',
+    'Name' => 'Naam',
+    'Title' => 'Titel',
+    'notes' => 'opmerkingen',
+    'Files' => 'Bestanden',
+    'File' => 'Bestand',
+    'Unassign' => 'Verwijderen',
+    'New file' => 'Nieuw bestand',
+    'No such model.' => 'Niet-bestaand model.',
 ];
+

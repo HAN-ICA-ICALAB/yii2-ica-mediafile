@@ -12,9 +12,10 @@ Module for attaching media files to models
         ],
         ],
 ```
-3. Run the provided migration (copy it to the main migrations directory and
+3. Add the mediafile module to the bootstrap section of your config.
+4. Run the provided migration (copy it to the main migrations directory and
    run yii migrate)
-4. Create a directory mediafiles under the web directory and make it writable
+5. Create a directory mediafiles under the web directory and make it writable
    for the web server.
 
 ## Usage
