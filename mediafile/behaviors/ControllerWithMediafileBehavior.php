@@ -79,6 +79,7 @@ class ControllerWithMediafileBehavior extends Behavior
 
         $mediafile = new Mediafile();
         $mediafile->mediafiletypeid = $mediafileType->id;
+        $mediafile->title = $model->newFile->baseName;
 
         $mediafile->file = $model->newFile;
 
