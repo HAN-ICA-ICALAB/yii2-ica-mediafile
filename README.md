@@ -1,9 +1,9 @@
 # yii2-ica-mediafile
-Module for attaching media files to models
+Extension for attaching media files to models
 
 ## Installation
 
-1. Install the mediafile module using composer:
+1. Install the mediafile extension using composer:
 ```
 composer require icalab/yii2-ica-mediafile
 ```
