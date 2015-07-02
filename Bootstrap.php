@@ -2,6 +2,7 @@
 
 namespace icalab\mediafile;
 use \yii\base\BootstrapInterface;
+use \Yii;
 class Bootstrap implements BootstrapInterface
 {
     /**
@@ -10,28 +11,10 @@ class Bootstrap implements BootstrapInterface
     {
         $app->controllerMap['mediafile'] = 'icalab\mediafile\controllers\MediafileController';
         $app->controllerMap['mediafiletype'] = 'icalab\mediafile\controllers\MediafiletypeController';
-        // TODO
-        /*
-    public function init()
-    {
-        parent::init();
-        $this->registerTranslations();
-    }
-
-    public function registerTranslations()
-    {
-        Yii::$app->i18n->translations['modules/mediafile/*'] = [
+        Yii::$app->i18n->translations['mediafile*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
-            'basePath' => '@app/modules/mediafile/messages',
+            'basePath' => '@icalab/mediafile/messages',
         ];
-    }
-
-    public static function t($category, $message, $params = [], $language = null)
-    {
-        return Yii::t('modules/mediafile/' . $category, $message, $params, $language);
-    }
-
-*/
     }
 }
