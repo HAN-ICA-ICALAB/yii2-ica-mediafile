@@ -2,6 +2,6 @@
   "name": "icalab/yii2-ica-mediafile",
   "type": "yii2-extension",
   "autoload": {
-    "psr-4": {"icalab\\mediafile": ""}
+    "psr-4": {"icalab\\mediafile\\": ""}
   }
 }
