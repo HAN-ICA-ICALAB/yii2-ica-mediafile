@@ -1,10 +1,10 @@
 <?php
-namespace app\modules\mediafile\models;
+namespace icalab\mediafile\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use app\modules\mediafile\models\Mediafiletype;
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\models\Mediafiletype;
+use icalab\mediafile\MediafileModule;
 use yii\behaviors\TimestampBehavior;
 use yii\web\UploadedFile;
 use yii\base\Exception;
@@ -106,7 +106,7 @@ class Mediafile extends ActiveRecord
         return [
             [['title', 'notes', 'mediafiletypeid'], 'safe'],
             ['uid', 'required'],
-            ['mediafiletypeid', 'exist', 'targetAttribute' => 'id', 'targetClass' => 'app\modules\mediafile\models\Mediafiletype'],
+            ['mediafiletypeid', 'exist', 'targetAttribute' => 'id', 'targetClass' => 'icalab\mediafile\models\Mediafiletype'],
             [['file'], 'file'],
         ];
     }

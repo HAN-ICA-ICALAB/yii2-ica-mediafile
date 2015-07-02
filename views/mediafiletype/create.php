@@ -1,9 +1,9 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\mediafile\Mediafiletype */
+/* @var $model icalab\mediafile\Mediafiletype */
 use yii\helpers\Url;
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\MediafileModule;
 
 $this->title = MediafileModule::t('mediafile', 'Create new media file type');
 

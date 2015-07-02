@@ -1,9 +1,9 @@
 <?php
-namespace app\modules\mediafile\models;
+namespace icalab\mediafile\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\MediafileModule;
 
 /**
  * Model for the mediafiletype table.

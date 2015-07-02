@@ -1,10 +1,10 @@
 <?php
-namespace app\modules\mediafile\models;
+namespace icalab\mediafile\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use app\modules\mediafile\models\Mediafile;
-use app\modules\mediafile\behaviors\ModelWithMediafileBehavior;
+use icalab\mediafile\models\Mediafile;
+use icalab\mediafile\behaviors\ModelWithMediafileBehavior;
 
 /**
  * @property integer $id

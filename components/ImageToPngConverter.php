@@ -15,7 +15,7 @@
  *
  */
 
-namespace app\modules\mediafile\components;
+namespace icalab\mediafile\components;
 
 use Yii;
 use yii\base\Exception;

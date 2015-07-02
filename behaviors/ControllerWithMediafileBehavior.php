@@ -1,5 +1,5 @@
 <?php
-namespace app\modules\mediafile\behaviors;
+namespace icalab\mediafile\behaviors;
 
 /*****************************************************************************
  *                                                                           *
@@ -11,9 +11,9 @@ namespace app\modules\mediafile\behaviors;
 use Yii;
 use yii\base\Exception;
 use yii\base\Behavior;
-use app\modules\mediafile\models\Mediafile;
-use app\modules\mediafile\models\Mediafiletype;
-use app\modules\mediafile\components\ImageToPngConverter;
+use icalab\mediafile\models\Mediafile;
+use icalab\mediafile\models\Mediafiletype;
+use icalab\mediafile\components\ImageToPngConverter;
 use yii\web\HttpException;
 class ControllerWithMediafileBehavior extends Behavior
 {

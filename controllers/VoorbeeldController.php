@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\mediafile\controllers;
+namespace icalab\mediafile\controllers;
 
 use Yii;
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\MediafileModule;
 use yii\web\Controller;
-use app\modules\mediafile\models\Mediafile;
-use app\modules\mediafile\models\Voorbeeld;
-use app\modules\mediafile\behaviors\ControllerWithMediafileBehavior;
+use icalab\mediafile\models\Mediafile;
+use icalab\mediafile\models\Voorbeeld;
+use icalab\mediafile\behaviors\ControllerWithMediafileBehavior;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;

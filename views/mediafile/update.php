@@ -1,9 +1,9 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\mediafile\models\Mediafile */
+/* @var $model icalab\mediafile\models\Mediafile */
 use yii\helpers\Url;
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\MediafileModule;
 
 $this->title = MediafileModule::t('mediafile', 'Update media file');
 

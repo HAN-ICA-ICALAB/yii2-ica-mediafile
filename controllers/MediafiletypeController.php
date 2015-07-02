@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\mediafile\controllers;
+namespace icalab\mediafile\controllers;
 use Yii;
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\MediafileModule;
 use yii\web\Controller;
-use app\modules\mediafile\models\Mediafiletype;
+use icalab\mediafile\models\Mediafiletype;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 

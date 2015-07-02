@@ -1,5 +1,7 @@
 <?php
 
+namespace icalab\mediafile;
+
 /**
  * This component wraps the Google Image Search API. It takes a search query 
  * as a parameter and returns an array of image data.

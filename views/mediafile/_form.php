@@ -1,8 +1,8 @@
 <?php
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\modules\mediafile\models\Mediafile */
+/* @var $model icalab\mediafile\models\Mediafile */
 
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\MediafileModule;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;

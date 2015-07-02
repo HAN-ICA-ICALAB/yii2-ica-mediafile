@@ -20,8 +20,8 @@
  *                                                                           *
  ****************************************************************************/
 
-namespace app\modules\mediafile\components;
-use app\modules\mediafile\MediafileModule;
+namespace icalab\mediafile\components;
+use icalab\mediafile\MediafileModule;
 use yii\base\Widget;
 use yii\helpers\Url;
 

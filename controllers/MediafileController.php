@@ -1,17 +1,17 @@
 <?php
 
-namespace app\modules\mediafile\controllers;
+namespace icalab\mediafile\controllers;
 use Yii;
 use yii\web\Controller;
-use app\modules\mediafile\models\Mediafiletype;
-use app\modules\mediafile\MediafileModule;
-use app\modules\mediafile\models\Mediafile;
+use icalab\mediafile\models\Mediafiletype;
+use icalab\mediafile\MediafileModule;
+use icalab\mediafile\models\Mediafile;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\web\HttpException;
 use yii\web\UploadedFile;
 use yii\base\Exception;
-use app\modules\mediafile\components\ImageToPngConverter;
+use icalab\mediafile\components\ImageToPngConverter;
 
 
 class MediafileController extends Controller

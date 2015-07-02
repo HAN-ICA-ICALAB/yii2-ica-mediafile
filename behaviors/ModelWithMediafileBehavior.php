@@ -10,12 +10,12 @@
  * object, access its mediafiles attribute.                                  *
  *                                                                           *
  ****************************************************************************/
-namespace app\modules\mediafile\behaviors;
+namespace icalab\mediafile\behaviors;
 
 use Yii;
 use yii\db\ActiveRecord;
-use app\modules\mediafile\models\Mediafile;
-use app\modules\mediafile\MediafileModule;
+use icalab\mediafile\models\Mediafile;
+use icalab\mediafile\MediafileModule;
 use yii\base\Exception;
 use yii\base\Behavior;
 
