@@ -2,6 +2,9 @@
   "name": "icalab/yii2-ica-mediafile",
   "type": "yii2-extension",
   "description" : "Extension for attaching media files to models.",
+  "extra" : {
+      "bootstrap" : "icalab\\mediafile\\Bootstrap"
+  },
   "autoload": {
     "psr-4": {"icalab\\mediafile\\": ""}
   }

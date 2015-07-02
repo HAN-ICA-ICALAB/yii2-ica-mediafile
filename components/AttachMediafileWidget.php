@@ -21,7 +21,7 @@
  ****************************************************************************/
 
 namespace icalab\mediafile\components;
-use icalab\mediafile\MediafileModule;
+use Yii;
 use yii\base\Widget;
 use yii\helpers\Url;
 
@@ -41,8 +41,9 @@ class AttachMediafileWidget extends Widget
     public function run()
     {
         $html = '<div class="row"><div class="form-group">';
+
         $html .= '<label class="control-label col-sm-3">'
-            . MediafileModule::t('mediafile', 'Files')
+            . Yii::t('mediafile', 'Files')
             . '</label>';
         $html .= '<div class="col-sm-9">';
         $html .= '<div class="container-fluid">';
@@ -54,7 +55,7 @@ class AttachMediafileWidget extends Widget
             if(preg_match('/^image\//', $mediafile->mediafiletype->mimetype))
             {
             $html .= '<img src="'
-                . Url::to(['mediafile/mediafile/view', 'id' => $mediafile->primaryKey])
+                . Url::to(['mediafile/view', 'id' => $mediafile->primaryKey])
                 . '" class="img-thumbnail" />';
             }
             else
@@ -62,7 +63,7 @@ class AttachMediafileWidget extends Widget
                 $name = $mediafile->title;
                 if(! $name )
                 {
-                    $name = MediafileModule::t('mediafile', 'File') . ' ' . $mediafile->primaryKey;
+                    $name = Yii::t('mediafile', 'File') . ' ' . $mediafile->primaryKey;
 
                 }
                 $html .= $name;
@@ -70,7 +71,7 @@ class AttachMediafileWidget extends Widget
             $html .= '<a href="'
                 . Url::to([$this->unassignAction, 'id' => $this->model->primaryKey, 'mediafile' => $mediafile->primaryKey])
                 . '" class="btn btn-warning center-block">'
-                . MediafileModule::t('mediafile', 'Unassign')
+                . Yii::t('mediafile', 'Unassign')
                 . '</a>';
             $html .= '<p></p>';
             $html .= '</div>';
@@ -84,7 +85,7 @@ class AttachMediafileWidget extends Widget
 
         $html .= '<div class="row">';
 
-        $html .= $this->form->field($this->model, 'newFile')->fileInput()->label(MediafileModule::t('mediafile', 'New file'));
+        $html .= $this->form->field($this->model, 'newFile')->fileInput()->label(Yii::t('mediafile', 'New file'));
         
         $html .= '</div>';
         return $html;

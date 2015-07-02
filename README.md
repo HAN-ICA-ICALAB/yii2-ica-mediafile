@@ -3,19 +3,15 @@ Module for attaching media files to models
 
 ## Installation
 
-1. Copy the mediafile directory to your modules directory.
-2. Enable the mediafile module in your config:
-```php
-    'modules' => [
-        'mediafile' => [
-            'class' => 'app\modules\mediafile\MediafileModule',
-        ],
-        ],
+1. Install the mediafile module using composer:
 ```
-3. Add the mediafile module to the bootstrap section of your config.
-4. Run the provided migration (copy it to the main migrations directory and
-   run yii migrate)
-5. Create a directory mediafiles under the web directory and make it writable
+composer require icalab/yii2-ica-mediafile
+```
+2. Run the provided migration:
+```
+php yii migrate --migrationPath=@icalab/mediafile/migrations
+```
+3. Create a directory mediafiles under the web directory and make it writable
    for the web server.
 
 ## Usage
@@ -55,7 +51,7 @@ echo AttachMediafileWidget::widget(['model' => $model, 'form' => $form]);
 ## Notes
 
 * Uploaded media files can be accessed from the web using the url
-  mediafile/mediafile/view/id_of_file
+  mediafile/view?id=id_of_file
 * By default uploaded images are converted to PNG to avoid further loss of
   quality. This was a requirement for the project we built this module for.
   If you don't want this, pass an extra parameter FALSE to the saveMediafile
