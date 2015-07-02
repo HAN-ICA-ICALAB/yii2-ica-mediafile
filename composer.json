@@ -1,6 +1,9 @@
 {
   "name": "icalab/yii2-ica-mediafile",
-  "version" : "0.1.0",
+  "type": "yii2-extension",
+  "require" : {
+      "yiisoft/yii2"
+  },
   "autoload": {
     "psr-4": {"icalab\\mediafile": ""}
   }
