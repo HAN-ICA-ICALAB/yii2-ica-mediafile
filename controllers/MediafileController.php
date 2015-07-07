@@ -101,7 +101,7 @@ class MediafileController extends Controller
         }
 
 
-        return $this->render('update', ['model' => $model]);
+        return $this->render('@icalab/mediafile/views/mediafile/update', ['model' => $model]);
     }
     public function actionCreate()
     {
@@ -173,7 +173,7 @@ class MediafileController extends Controller
                 return $this->redirect(['update', 'id' => $model->primaryKey]);
             }
         }
-        return $this->render('create', ['model' => $model]);
+        return $this->render('@icalab/mediafile/views/mediafile/create', ['model' => $model]);
     }
     
 }

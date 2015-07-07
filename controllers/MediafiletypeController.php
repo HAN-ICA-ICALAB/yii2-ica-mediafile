@@ -21,7 +21,7 @@ class MediafiletypeController extends Controller
                     'pageSize' => 20,
                 ]
             ]);
-        return $this->render('index', ['dataProvider' => $dataProvider]);
+        return $this->render('@icalab/mediafile/views/mediafiletype/index', ['dataProvider' => $dataProvider]);
     }
 
     /**
@@ -40,7 +40,7 @@ class MediafiletypeController extends Controller
                 $this->redirect(['update', 'id' => $model->primaryKey]);
             };
         }
-        return $this->render('create', ['model' => $model]);
+        return $this->render('@icalab/mediafile/views/mediafiletype/create', ['model' => $model]);
     }
 
     public function actionUpdate($id)
@@ -57,7 +57,7 @@ class MediafiletypeController extends Controller
             $model->save();
         }
 
-        return $this->render('update', ['model' => $model]);
+        return $this->render('@icalab/mediafile/view/mediafiletype/update', ['model' => $model]);
     }
 
 
