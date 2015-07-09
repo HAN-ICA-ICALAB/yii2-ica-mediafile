@@ -55,8 +55,8 @@ class Mediafile extends ActiveRecord
     {
         return [
             'mediafiletypeid' => Yii::t('mediafile', 'File type'),
-                'title' => MediafileModule::t('mediafile', 'Title'),
-                'notes' => MediafileModule::t('mediafile', 'notes'),
+                'title' => Yii::t('mediafile', 'Title'),
+                'notes' => Yii::t('mediafile', 'notes'),
             ];
     }
 

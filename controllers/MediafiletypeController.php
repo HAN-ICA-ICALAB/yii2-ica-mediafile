@@ -48,7 +48,7 @@ class MediafiletypeController extends Controller
         $model = Mediafiletype::findOne(['id' => $id]);
         if(null === $model)
         {
-            throw new NotFoundHttpException(MediafileModule::t('mediafile', 'No such media file type.'));
+            throw new NotFoundHttpException(Yii::t('mediafile', 'No such media file type.'));
         }
 
         if(null !== yii::$app->request->post('Mediafiletype'))
@@ -57,7 +57,7 @@ class MediafiletypeController extends Controller
             $model->save();
         }
 
-        return $this->render('@icalab/mediafile/view/mediafiletype/update', ['model' => $model]);
+        return $this->render('@icalab/mediafile/views/mediafiletype/update', ['model' => $model]);
     }
 
 

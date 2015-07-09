@@ -22,7 +22,7 @@ class MediafileController extends Controller
         $model = Mediafile::findOne($id);
         if(! $model)
         {
-            throw new NotFoundHttpException(MediafileModule::t('mediafile', 'File not found.'));
+            throw new NotFoundHttpException(Yii::t('mediafile', 'File not found.'));
         }
         header("Content-type: " . $model->mediafiletype->mimetype);
         echo $model->fileData;
@@ -33,7 +33,7 @@ class MediafileController extends Controller
         $model = Mediafile::findOne($id);
         if(! $model)
         {
-            throw new NotFoundHttpException(MediafileModule::t('mediafile', 'File not found.'));
+            throw new NotFoundHttpException(Yii::t('mediafile', 'File not found.'));
         }
 
         if(Yii::$app->request->isPost)

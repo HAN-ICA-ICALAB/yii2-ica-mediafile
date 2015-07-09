@@ -41,8 +41,8 @@ class VoorbeeldController extends Controller
         if(Yii::$app->request->isPost)
         {
             $model->attributes = Yii::$app->request->post('Voorbeeld');
-            $model->newFile = UploadedFile::getInstance($model, 'newFile');
-            if($model->validate() && (! $model->newFile || $this->saveMediaFile($model)))
+            $model->newFiles = UploadedFile::getInstance($model, 'newFiles');
+            if($model->validate() && (! $model->newFiles || $this->saveMediaFiles($model)))
             {
                 $model->save();
                 $this->redirect(['update', 'id' => $id]);

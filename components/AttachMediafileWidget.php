@@ -24,6 +24,7 @@ namespace icalab\mediafile\components;
 use Yii;
 use yii\base\Widget;
 use yii\helpers\Url;
+use kartik\file\FileInput;
 
 class AttachMediafileWidget extends Widget
 {
@@ -40,54 +41,76 @@ class AttachMediafileWidget extends Widget
 
     public function run()
     {
-        $html = '<div class="row"><div class="form-group">';
+
+        $html = '';
+
+        $html .= '<div class="form-group">';
 
         $html .= '<label class="control-label col-sm-3">'
             . Yii::t('mediafile', 'Files')
             . '</label>';
-        $html .= '<div class="col-sm-9">';
-        $html .= '<div class="container-fluid">';
+        $html .= '<div class="col-sm-6">';
 
-        $html .= '<div class="row ">';
         foreach($this->model->mediafiles as $mediafile)
         {
-            $html .= '<div class="col-sm-3">';
+            // Steal classes from kartik's plugin.
+            
             if(preg_match('/^image\//', $mediafile->mediafiletype->mimetype))
             {
-            $html .= '<img src="'
-                . Url::to(['mediafile/view', 'id' => $mediafile->primaryKey])
-                . '" class="img-thumbnail" />';
+                $html .= '<div class="file-preview-frame">';
+            }
+            // Not an image.
+            else
+            {
+                $html .= '<div class="file-preview-frame" style="width: 160px; height: auto; ">';
+            }
+            if(preg_match('/^image\//', $mediafile->mediafiletype->mimetype))
+            {
+                $html .= '<img src="'
+                    . Url::to(['mediafile/view', 'id' => $mediafile->primaryKey])
+                    . '" style="width: auto; height: 160px;" />';
             }
             else
             {
+                $html .= '<div class="file-preview-other"><i class="glyphicon glyphicon-file"></i></div>';
                 $name = $mediafile->title;
                 if(! $name )
                 {
                     $name = Yii::t('mediafile', 'File') . ' ' . $mediafile->primaryKey;
 
                 }
+                $html .= '<div class="file-caption-name">';
                 $html .= $name;
+                $html .= '</div>';
+                $html .= '<div class="file-caption-name">';
+                $html .= $mediafile->mediafiletype->extension 
+                    . Yii::t('mediafile', '-file');
+                $html .= '</div>';
             }
+            $html .= '<br />';
+            $html .= '<br />';
             $html .= '<a href="'
                 . Url::to([$this->unassignAction, 'id' => $this->model->primaryKey, 'mediafile' => $mediafile->primaryKey])
                 . '" class="btn btn-warning center-block">'
                 . Yii::t('mediafile', 'Unassign')
                 . '</a>';
-            $html .= '<p></p>';
-            $html .= '</div>';
+            $html .= '<br />';
+            $html .= '</div>'; // preview pane
         }
-        $html .= '</div>'; // row (files)
 
-        $html .= '</div>'; // container
         $html .= '</div>'; // col
-        $html .= '</div></div>'; // form-group, row
+        $html .= '</div>'; // form-group
 
-
-        $html .= '<div class="row">';
-
-        $html .= $this->form->field($this->model, 'newFile')->fileInput()->label(Yii::t('mediafile', 'New file'));
+        // HACK: if you do not manually append [] to the name of the
+        // attribute, only one file will be uploaded.
+        $html .= $this->form->field($this->model, 'newFiles[]')->widget(FileInput::classname(), [
+            'options' => ['accept' => 'image/*', 'multiple' => true],
+            'pluginOptions' => [
+                'showUpload' => false,
+                ],
+        ])
+            ->label(Yii::t('mediafile', 'New file'));
         
-        $html .= '</div>';
         return $html;
     }
 }

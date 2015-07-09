@@ -35,7 +35,7 @@ In short:
    following:
 ```php
             $model->newFile = UploadedFile::getInstance($model, 'newFile');
-            if($model->validate() && (! $model->newFile || $this->saveMediaFile($model)))
+            if($model->validate() && (! $model->newFiles || $this->saveMediaFiles($model)))
             {
                 $model->save();
                 $this->redirect(['update', 'id' => $id]);
@@ -56,6 +56,8 @@ echo AttachMediafileWidget::widget(['model' => $model, 'form' => $form]);
   quality. This was a requirement for the project we built this module for.
   If you don't want this, pass an extra parameter FALSE to the saveMediafile
   method the model inherits from the ModelWithMediafileBehavior behavior.
+* The AttachMediafileWidget uses Kartik Visweswaran's excellent FileInput
+  widget: https://github.com/kartik-v/yii2-widget-fileinput
 
 
 

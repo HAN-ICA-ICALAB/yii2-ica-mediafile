@@ -22,11 +22,11 @@ echo $form->field($model, 'extension');
 
 if($model->isNewRecord)
 {
-    echo Html::submitButton(MediafileModule::t('mediafile', 'Create'), ['class' => 'btn btn-primary']);
+    echo Html::submitButton(Yii::t('mediafile', 'Create'), ['class' => 'btn btn-primary']);
 }
 else
 {
-    echo Html::submitButton(MediafileModule::t('mediafile', 'Update'), ['class' => 'btn btn-primary']);
+    echo Html::submitButton(Yii::t('mediafile', 'Update'), ['class' => 'btn btn-primary']);
 }
 
 ActiveForm::end();

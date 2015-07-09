@@ -44,99 +44,110 @@ class ControllerWithMediafileBehavior extends Behavior
     }
 
     /**
-     * Save a new media file and attach it to a specific model. The newFile 
+     * Save a new media file and attach it to a specific model. The newFiles
      * attribute of the model must be set tp an instance of UploadedFile.
      * 
      * Example:
      * $model = new SomeModel();
-     * $model->newFile = UploadedFile::getInstance($model, 'newFile');
-     * if($model->newFile)
+     * $model->newFiles = UploadedFile::getInstances($model, 'newFiles');
+     * if($model->newFiles)
      * {
-     *   $this->saveMediafile($model);
+     *   $this->saveMediafiles($model);
      * }
      *
-     * @param model the model to attach the file to. The newFile attribute of 
+     * @param model the model to attach the file(s) to. The newFiles attribute of 
      * the model must be set, otherwise nothing happens
      * @param saveAsPng if true, images will be saved as png (this is the 
      * default)
      * @return whether saving succeeded or not
      */
-    public function saveMediafile($model, $saveAsPng = TRUE)
+    public function saveMediafiles($model, $saveAsPng = TRUE)
     {
-        if(! $model->newFile)
+        if(! $model->newFiles)
         {
             return FALSE;
         }
-        // First figure out the mime type. We need to do this before
-        // validating the media file.
 
-        $mediafileType = Mediafiletype::findOne(['mimetype' => $model->newFile->type]);
-        if(! $mediafileType)
+        $mediafiles = [];
+
+        // First validate the new files. If the new files are not valid,
+        // abort.
+        foreach($model->newFiles as $newFile)
         {
-
-            throw new HttpException(500, 'Unknown media file type: ' . $model->newFile->type);
-        }
-
-        $mediafile = new Mediafile();
-        $mediafile->mediafiletypeid = $mediafileType->id;
-        $mediafile->title = $model->newFile->baseName;
-
-        $mediafile->file = $model->newFile;
-
-        if(! $mediafile->validate())
-        {
-            return FALSE;
-        }
-        // Save file contents to disk.
-
-        // Create the directory if it does not exist yet.
-        $directory = preg_replace('/\/[^\/]+$/', '', $mediafile->filePath);
-        if(! file_exists($directory))
-        {
-            $success = @mkdir($directory, 0755, true);
-            if(! $success)
+            $mediafileType = Mediafiletype::findOne(['mimetype' => $newFile->type]);
+            if(! $mediafileType)
             {
-                Yii::error("Unable to create directory $directory");
-                throw new HttpException(500, "Unable to create directory for file upload.");
+
+                throw new HttpException(500, 'Unknown media file type: ' . $newFile->type);
             }
+
+            $mediafile = new Mediafile();
+            $mediafile->mediafiletypeid = $mediafileType->id;
+            $mediafile->title = $newFile;
+
+            $mediafile->file = $newFile;
+
+            if(! $mediafile->validate())
+            {
+                return FALSE;
+            }
+            $mediafiles[] = $mediafile;
         }
 
-        // Convert all images to PNG if requested and save the data to disk.
-        if(preg_match('/^image\//', $mediafile->file->type) && $saveAsPng)
-        {
-            $converter = new ImageToPngConverter();
-            $converter->setPath($mediafile->file->tempName);
-            $converter->setType($mediafile->file->type);
-            $converter->convert();
-            $fileHandle = @fopen($mediafile->filePath, 'w');
-            if(! $fileHandle)
-            {
-                throw new Exception("Unable to save file data to "
-                    . $this->filePath);
-            }
-            if(false === fwrite($fileHandle, $converter->getPngData()))
-            {
-                throw new Exception("Unable to write file data to "
-                    . $this->filePath);
-            }
-        }
-        // Not an image or no conversion requested. Save file as is.
-        else
+        // If we're still here, all media files were ok. Save them.
+        foreach($mediafiles as $mediafile)
         {
 
-            if(! copy($mediafile->file->tempName, $mediafile->filePath))
+            // Create the directory if it does not exist yet.
+            $directory = preg_replace('/\/[^\/]+$/', '', $mediafile->filePath);
+            if(! file_exists($directory))
             {
-                Yii::error("Unable to write to file " . $mediafile->getFilePath);
-                throw new HttpException(500, "Unable to copy uploaded file to destination.");
+                $success = @mkdir($directory, 0755, true);
+                if(! $success)
+                {
+                    Yii::error("Unable to create directory $directory");
+                    throw new HttpException(500, "Unable to create directory for file upload.");
+                }
             }
+
+            // Convert all images to PNG if requested and save the data to disk.
+            if(preg_match('/^image\//', $mediafile->file->type) && $saveAsPng)
+            {
+                $converter = new ImageToPngConverter();
+                $converter->setPath($mediafile->file->tempName);
+                $converter->setType($mediafile->file->type);
+                $converter->convert();
+                $fileHandle = @fopen($mediafile->filePath, 'w');
+                if(! $fileHandle)
+                {
+                    throw new Exception("Unable to save file data to "
+                        . $this->filePath);
+                }
+                if(false === fwrite($fileHandle, $converter->getPngData()))
+                {
+                    throw new Exception("Unable to write file data to "
+                        . $this->filePath);
+                }
+            }
+            // Not an image or no conversion requested. Save file as is.
+            else
+            {
+
+                if(! copy($mediafile->file->tempName, $mediafile->filePath))
+                {
+                    Yii::error("Unable to write to file " . $mediafile->getFilePath);
+                    throw new HttpException(500, "Unable to copy uploaded file to destination.");
+                }
+            }
+
+            @chmod($mediafile->filePath, 0755);
+
+            $mediafile->save();
+
+            $model->addMediafile($mediafile);
         }
 
-        @chmod($mediafile->filePath, 0755);
-
-        unset($model->newFile);
-        $mediafile->save();
-
-        $model->addMediafile($mediafile);
+        unset($model->newFiles);
 
         return TRUE;
 

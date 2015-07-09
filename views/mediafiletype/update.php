@@ -5,10 +5,10 @@
 use yii\helpers\Url;
 use icalab\mediafile\MediafileModule;
 
-$this->title = MediafileModule::t('mediafile', 'Update media file type');
+$this->title = Yii::t('mediafile', 'Update media file type');
 
 $this->params['breadcrumbs'][] = [
-    'label' => MediafileModule::t('mediafile', 'Media file types'),
+    'label' => Yii::t('mediafile', 'Media file types'),
         'url' => Url::toRoute(['mediafiletype/index']),];
 $this->params['breadcrumbs'][] = $model->name;
 ?>

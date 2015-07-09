@@ -41,9 +41,9 @@ class Mediafiletype extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name' => MediafileModule::t('mediafile', 'Name'),
-        'mimetype' => MediafileModule::t('mediafile', 'MIME type'),
-        'extension' => MediafileModule::t('mediafile', 'Extension'),
+            'name' => Yii::t('mediafile', 'Name'),
+        'mimetype' => Yii::t('mediafile', 'MIME type'),
+        'extension' => Yii::t('mediafile', 'Extension'),
     ];
     }
 

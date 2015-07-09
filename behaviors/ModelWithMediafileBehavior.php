@@ -25,9 +25,9 @@ class ModelWithMediafileBehavior extends Behavior
     /**
      * This attribute can be used to deal with uploading files in
      * controllers and views. It is NOT used inside the model itself.
-     * @var UploadedFile|Null newFile attribute
+     * @var UploadedFile|Null newFiles attribute
      */
-    public $newFile;
+    public $newFiles;
 
     private $_viaTableName = NULL;
     private function getViaTableName()

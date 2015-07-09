@@ -30,11 +30,11 @@ echo $form->field($model, 'notes')->textarea(['rows' => 3]);
 
 if($model->isNewRecord)
 {
-    echo Html::submitButton(MediafileModule::t('mediafile', 'Create'), ['class' => 'btn btn-primary']);
+    echo Html::submitButton(Yii::t('mediafile', 'Create'), ['class' => 'btn btn-primary']);
 }
 else
 {
-    echo Html::submitButton(MediafileModule::t('mediafile', 'Update'), ['class' => 'btn btn-primary']);
+    echo Html::submitButton(Yii::t('mediafile', 'Update'), ['class' => 'btn btn-primary']);
 }
 
 ActiveForm::end();

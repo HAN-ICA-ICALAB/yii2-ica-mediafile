@@ -28,5 +28,6 @@ return [
     'Unassign' => 'Verwijderen',
     'New file' => 'Nieuw bestand',
     'No such model.' => 'Niet-bestaand model.',
+    '-file' => '-bestand',
 ];
 

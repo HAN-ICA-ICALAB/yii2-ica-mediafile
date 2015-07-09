@@ -7,7 +7,7 @@ use yii\widgets\ListView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use icalab\mediafile\MediafileModule;
-$this->title = MediafileModule::t('mediafile', 'File types');
+$this->title = Yii::t('mediafile', 'File types');
 ?>
 
 <div class="mediafiletype-index">

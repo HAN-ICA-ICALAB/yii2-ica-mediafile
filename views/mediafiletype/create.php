@@ -5,12 +5,12 @@
 use yii\helpers\Url;
 use icalab\mediafile\MediafileModule;
 
-$this->title = MediafileModule::t('mediafile', 'Create new media file type');
+$this->title = Yii::t('mediafile', 'Create new media file type');
 
 $this->params['breadcrumbs'][] = [
-    'label' => MediafileModule::t('mediafile', 'Media file types'),
+    'label' => Yii::t('mediafile', 'Media file types'),
         'url' => Url::toRoute(['mediafiletype/index']),];
-$this->params['breadcrumbs'][] = MediafileModule::t('mediafile', 'New media file type');
+$this->params['breadcrumbs'][] = Yii::t('mediafile', 'New media file type');
 
 ?>
 
