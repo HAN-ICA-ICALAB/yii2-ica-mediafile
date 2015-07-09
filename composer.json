@@ -5,6 +5,9 @@
     "keywords": ["yii2", "extension", "widget", "detail", "media"],
     "homepage": "https://github.com/icalab/yii2-ica-mediafile",
     "type": "yii2-extension",
+    "require" : {
+        "kartik-v/yii2-widget-fileinput" : "*"
+    },
     "extra" : {
         "bootstrap" : "icalab\\mediafile\\Bootstrap"
     },
