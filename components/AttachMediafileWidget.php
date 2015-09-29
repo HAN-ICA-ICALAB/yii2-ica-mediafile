@@ -18,6 +18,9 @@
  *                                                                           *
  * form : the form object this widget is a part of (required)                *
  *                                                                           *
+ * maxFileCount: the max number of media files to attach (0 = unlimited,     *
+ * which  is the default).                                                   *
+ *                                                                           *
  ****************************************************************************/
 
 namespace icalab\mediafile\components;
@@ -33,6 +36,8 @@ class AttachMediafileWidget extends Widget
     public $unassignAction = 'unassign';
 
     public $form;
+
+    public $maxFileCount = 0;
 
     public function init()
     {
@@ -54,7 +59,7 @@ class AttachMediafileWidget extends Widget
         foreach($this->model->mediafiles as $mediafile)
         {
             // Steal classes from kartik's plugin.
-            
+
             if(preg_match('/^image\//', $mediafile->mediafiletype->mimetype))
             {
                 $html .= '<div class="file-preview-frame">';
@@ -83,7 +88,7 @@ class AttachMediafileWidget extends Widget
                 $html .= $name;
                 $html .= '</div>';
                 $html .= '<div class="file-caption-name">';
-                $html .= $mediafile->mediafiletype->extension 
+                $html .= $mediafile->mediafiletype->extension
                     . Yii::t('mediafile', '-file');
                 $html .= '</div>';
             }
@@ -107,10 +112,11 @@ class AttachMediafileWidget extends Widget
             'options' => ['accept' => 'image/*', 'multiple' => true],
             'pluginOptions' => [
                 'showUpload' => false,
+                'maxFileCount' => $this->maxFileCount,
                 ],
         ])
             ->label(Yii::t('mediafile', 'New file'));
-        
+
         return $html;
     }
 }
