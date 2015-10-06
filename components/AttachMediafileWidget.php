@@ -106,6 +106,7 @@ class AttachMediafileWidget extends Widget
         $html .= '</div>'; // col
         $html .= '</div>'; // form-group
 
+        $html .= '<div style="clear: both;">';
         // HACK: if you do not manually append [] to the name of the
         // attribute, only one file will be uploaded.
         $html .= $this->form->field($this->model, 'newFiles[]')->widget(FileInput::classname(), [
@@ -117,6 +118,7 @@ class AttachMediafileWidget extends Widget
         ])
             ->label(Yii::t('mediafile', 'New file'));
 
+        $html .= '</div>';
         return $html;
     }
 }
