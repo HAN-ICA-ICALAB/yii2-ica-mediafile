@@ -114,11 +114,12 @@ class AttachMediafileWidget extends Widget
             'pluginOptions' => [
                 'showUpload' => false,
                 'maxFileCount' => $this->maxFileCount,
+                'autoReplace' => true,
                 ],
         ])
-            ->label(Yii::t('mediafile', 'New file'));
-
+        ->label(Yii::t('mediafile', 'New file'));
         $html .= '</div>';
+
         return $html;
     }
 }
