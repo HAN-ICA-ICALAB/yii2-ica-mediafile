@@ -77,13 +77,14 @@ class AttachMediafileWidget extends Widget
             }
             else
             {
-                $html .= '<div class="file-preview-other"><i class="glyphicon glyphicon-file"></i></div>';
+                //$html .= '<div class="file-preview-other"><i class="glyphicon glyphicon-file"></i></div>';
                 $name = $mediafile->title;
                 if(! $name )
                 {
                     $name = Yii::t('mediafile', 'File') . ' ' . $mediafile->primaryKey;
 
                 }
+                $name = preg_replace('/\.[^\.]+$/', '', $name);
                 $html .= '<div class="file-caption-name">';
                 $html .= $name;
                 $html .= '</div>';
@@ -110,7 +111,7 @@ class AttachMediafileWidget extends Widget
         // HACK: if you do not manually append [] to the name of the
         // attribute, only one file will be uploaded.
         $html .= $this->form->field($this->model, 'newFiles[]')->widget(FileInput::classname(), [
-            'options' => ['accept' => 'image/*', 'multiple' => true],
+            'options' => ['accept' => ['image/*', 'video/*'], 'multiple' => true],
             'pluginOptions' => [
                 'showUpload' => false,
                 'maxFileCount' => $this->maxFileCount,

@@ -75,9 +75,14 @@ class ControllerWithMediafileBehavior extends Behavior
         foreach($model->newFiles as $newFile)
         {
             $mediafileType = Mediafiletype::findOne(['mimetype' => $newFile->type]);
+            // Mime type detection does not always work flawlessly. If no mime 
+            // type is supplied, check if we recognize the file extension.
             if(! $mediafileType)
             {
-
+                $mediafileType = Mediafiletype::findOne(['extension' => $newFile->extension]);
+            }
+            if(! $mediafileType)
+            {
                 throw new HttpException(500, 'Unknown media file type: ' . $newFile->type);
             }
 
