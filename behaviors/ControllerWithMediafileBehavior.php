@@ -68,6 +68,9 @@ class ControllerWithMediafileBehavior extends Behavior
             return FALSE;
         }
 
+        // We need this in the converter below.
+        $pngType = Mediafiletype::findOne(['mimetype' => 'image/png']);
+
         $mediafiles = [];
 
         // First validate the new files. If the new files are not valid,
@@ -133,6 +136,7 @@ class ControllerWithMediafileBehavior extends Behavior
                     throw new Exception("Unable to write file data to "
                         . $this->filePath);
                 }
+                $mediafile->mediafiletypeid = $pngType->primaryKey;
             }
             // Not an image or no conversion requested. Save file as is.
             else
