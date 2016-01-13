@@ -21,6 +21,11 @@
  * maxFileCount: the max number of media files to attach (0 = unlimited,     *
  * which  is the default).                                                   *
  *                                                                           *
+ * label : the label for the entire upload widget (defaults to "Files")      *
+ *                                                                           *
+ * newFileLabel: the label for the file upload input (defaults to            *
+ * "New files")                                                              *
+ *                                                                           *
  ****************************************************************************/
 
 namespace icalab\mediafile\components;
@@ -39,6 +44,10 @@ class AttachMediafileWidget extends Widget
 
     public $maxFileCount = 0;
 
+    public $label = null;
+
+    public $newFileLabel = null;
+
     public function init()
     {
         parent::init();
@@ -47,12 +56,20 @@ class AttachMediafileWidget extends Widget
     public function run()
     {
 
+        if($this->label === null)
+        {
+            $this->label = Yii::t('mediafile', 'Files');
+        }
+        if($this->newFileLabel === null)
+        {
+            $this->newFileLabel = Yii::t('mediafile', 'New file');
+        }
         $html = '';
 
         $html .= '<div class="form-group">';
 
         $html .= '<label class="control-label col-sm-3">'
-            . Yii::t('mediafile', 'Files')
+            . $this->label
             . '</label>';
         $html .= '<div class="col-sm-6">';
 
@@ -118,7 +135,7 @@ class AttachMediafileWidget extends Widget
                 'autoReplace' => true,
                 ],
         ])
-        ->label(Yii::t('mediafile', 'New file'));
+        ->label($this->newFileLabel);
         $html .= '</div>';
 
         return $html;
