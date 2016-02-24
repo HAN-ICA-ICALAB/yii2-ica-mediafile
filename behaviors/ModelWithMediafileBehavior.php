@@ -30,7 +30,7 @@ class ModelWithMediafileBehavior extends Behavior
     public $newFiles;
 
     private $_viaTableName = NULL;
-    private function getViaTableName()
+    protected function getViaTableName()
     {
         if(preg_match('/}}$/', $this->owner->tableName()))
         {
