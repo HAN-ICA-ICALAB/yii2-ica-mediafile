@@ -24,6 +24,7 @@ class MediafileController extends Controller
         {
             throw new NotFoundHttpException(Yii::t('mediafile', 'File not found.'));
         }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
         header("Content-type: " . $model->mediafiletype->mimetype);
         echo $model->fileData;
     }
