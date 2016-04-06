@@ -66,12 +66,12 @@ class AttachMediafileWidget extends Widget
         }
         $html = '';
 
-        $html .= '<div class="form-group">';
+        $html .= '<div class="form-group file-preview-wrapper ">';
 
-        $html .= '<label class="control-label col-sm-3">'
+        $html .= '<label class="control-label col col-sm-3">'
             . $this->label
             . '</label>';
-        $html .= '<div class="col-sm-6">';
+        $html .= '<div class="col col-sm-6">';
 
         foreach($this->model->mediafiles as $mediafile)
         {
@@ -124,7 +124,7 @@ class AttachMediafileWidget extends Widget
         $html .= '</div>'; // col
         $html .= '</div>'; // form-group
 
-        $html .= '<div style="clear: both;">';
+        $html .= '<div class="file-upload-wrapper">';
         // HACK: if you do not manually append [] to the name of the
         // attribute, only one file will be uploaded.
         $html .= $this->form->field($this->model, 'newFiles[]')->widget(FileInput::classname(), [
